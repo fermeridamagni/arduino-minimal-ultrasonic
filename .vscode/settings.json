@@ -1,6 +1,7 @@
 {
 	"editor.formatOnPaste": true,
 	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "ms-vscode.cpptools",
 	"[html][javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},

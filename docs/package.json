@@ -2,6 +2,8 @@
 	"name": "minimal-ultrasonic-docs",
 	"version": "2.0.0",
 	"description": "Documentation for MinimalUltrasonic Arduino library",
+	"license": "MIT",
+	"author": "fermeridamagni <hello@magni.dev>",
 	"type": "module",
 	"scripts": {
 		"docs:dev": "vitepress dev",
@@ -15,6 +17,5 @@
 		"type": "git",
 		"url": "https://github.com/fermeridamagni/arduino-minimal-ultrasonic.git"
 	},
-	"author": "fermeridamagni <hello@magni.dev>",
-	"license": "MIT"
+	"packageManager": "pnpm@10.19.0"
 }
