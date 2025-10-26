@@ -19,15 +19,11 @@
  * Released into the MIT License.
  */
 
-#if ARDUINO >= 100
-  #include <Arduino.h>
-#else
-  #include <WProgram.h>
-#endif
+#include <Arduino.h>
+#include "MinimalUltrasonic.h"
 
-#include "Ultrasonic.h"
-
-Ultrasonic::Ultrasonic(uint8_t trigPin, uint8_t echoPin, unsigned long timeOut) {
+MinimalUltrasonic::MinimalUltrasonic(uint8_t trigPin, uint8_t echoPin, unsigned long timeOut)
+{
   trig = trigPin;
   echo = echoPin;
   threePins = trig == echo ? true : false;
@@ -36,7 +32,8 @@ Ultrasonic::Ultrasonic(uint8_t trigPin, uint8_t echoPin, unsigned long timeOut) 
   timeout = timeOut;
 }
 
-unsigned int Ultrasonic::timing() {
+unsigned int MinimalUltrasonic::timing()
+{
   if (threePins)
     pinMode(trig, OUTPUT);
 
@@ -49,11 +46,13 @@ unsigned int Ultrasonic::timing() {
 
   if (threePins)
     pinMode(trig, INPUT);
-  
+
   previousMicros = micros();
-  while(!digitalRead(echo) && (micros() - previousMicros) <= timeout); // wait for the echo pin HIGH or timeout
+  while (!digitalRead(echo) && (micros() - previousMicros) <= timeout)
+    ; // wait for the echo pin HIGH or timeout
   previousMicros = micros();
-  while(digitalRead(echo)  && (micros() - previousMicros) <= timeout); // wait for the echo pin LOW or timeout
+  while (digitalRead(echo) && (micros() - previousMicros) <= timeout)
+    ; // wait for the echo pin LOW or timeout
 
   return micros() - previousMicros; // duration
 }
@@ -63,14 +62,7 @@ unsigned int Ultrasonic::timing() {
  * sby default, it will return the distance in centimeters.
  * To change the default, replace CM by INC.
  */
-unsigned int Ultrasonic::read(uint8_t und) {
-  return timing() / und / 2;  //distance by divisor
-}
-
-/*
- * This method is too verbal, so, it's deprecated.
- * Use read() instead.
- */
-unsigned int Ultrasonic::distanceRead(uint8_t und) {
-  return read(und);
+unsigned int MinimalUltrasonic::read(uint8_t und)
+{
+  return timing() / und / 2; // distance by divisor
 }
