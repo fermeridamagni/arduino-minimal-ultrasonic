@@ -1,22 +1,8 @@
 /*
- * Ultrasonic.cpp
- *
- * Library for Ultrasonic Ranging Module in a minimalist way
- *
- * created 3 Apr 2014
- * by Erick Simões (github: @ErickSimoes | twitter: @AloErickSimoes)
- * modified 23 Jan 2017
- * by Erick Simões (github: @ErickSimoes | twitter: @AloErickSimoes)
- * modified 04 Mar 2017
- * by Erick Simões (github: @ErickSimoes | twitter: @AloErickSimoes)
- * modified 15 May 2017
- * by Eliot Lim    (github: @eliotlim)
- * modified 10 Jun 2018
- * by Erick Simões (github: @ErickSimoes | twitter: @AloErickSimoes)
- * modified 14 Jun 2018
- * by Otacilio Maia (github: @OtacilioN | linkedIn: in/otacilio)
- *
- * Released into the MIT License.
+ * @file MinimalUltrasonic.cpp
+ * @brief Library for Ultrasonic Ranging Module in a minimalist way
+ * @date 25 Oct 2025
+ * @author fermeridamagni (Magni Development)
  */
 
 #include <Arduino.h>
