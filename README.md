@@ -106,7 +106,6 @@ The idea is to provide a simpler environment possible. To do this, simply follow
 
 ## License
 
-Minimal Ultrasonic by [fermeridamagni](http://magni.dev "fermeridamagni - Magni Development") is licensed under a MIT License.
-Based on the work of Erick Simões available [here](https://github.com/ErickSimoes/Ultrasonic).
+Minimal Ultrasonic by [fermeridamagni](http://magni.dev "fermeridamagni - Magni Development") is licensed under a MIT License. Based on [the work of Erick Simões](https://github.com/ErickSimoes/Ultrasonic).
 
 See [LICENSE](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/blob/master/LICENSE) for details.
