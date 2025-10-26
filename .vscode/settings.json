@@ -1,0 +1,10 @@
+{
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"[html][javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+
+	// Biome Formatter
+	"biome.suggestInstallingGlobally": false
+}
