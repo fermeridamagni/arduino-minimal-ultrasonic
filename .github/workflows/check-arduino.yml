@@ -3,6 +3,9 @@ name: Check Arduino
 on:
   push:
     branches: [master]
+    paths:
+      - "src/**"
+      - "examples/**"
 
   pull_request:
     branches: [master]
