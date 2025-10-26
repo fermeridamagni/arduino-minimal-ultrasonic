@@ -2,6 +2,7 @@
 	"recommendations": [
 		"vscode-arduino.vscode-arduino-community",
 		"biomejs.biome",
-		"DavidAnson.vscode-markdownlint"
+		"DavidAnson.vscode-markdownlint",
+		"redhat.vscode-yaml"
 	]
 }

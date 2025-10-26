@@ -8,6 +8,9 @@
 	"[md]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	},
+	"[github-actions-workflow]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
 
 	// Biome Formatter
 	"biome.suggestInstallingGlobally": false
