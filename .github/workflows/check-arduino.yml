@@ -2,10 +2,10 @@ name: Check Arduino
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
   pull_request:
-    branches: [main]
+    branches: [master]
 
   workflow_dispatch:
 
@@ -57,11 +57,11 @@ jobs:
             fqbn: "arduino:avr:leonardo"
             serial-enabled: true
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Zip
         uses: montudor/action-zip@v0.1.1
