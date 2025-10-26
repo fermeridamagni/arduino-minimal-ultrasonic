@@ -97,16 +97,16 @@ jobs:
         run: arduino-cli lib install --zip-path ./ultrasonic.zip
 
       - name: Compile Sketch `basic.ino`
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/basic.ino
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/basic
 
       - name: Compile Sketch `advanced.ino`
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/advanced.ino
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/advanced
 
       - name: Compile Sketch `all-units.ino`
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/all-units.ino
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/all-units
 
       - name: Compile Sketch `multiple-sensors.ino`
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/multiple-sensors.ino
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/multiple-sensors
 
       - name: Compile Sketch `timeout.ino`
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/timeout.ino
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/timeout
