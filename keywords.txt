@@ -1,24 +1,37 @@
 #######################################
-# Syntax Coloring Map Ultrasonic
-# by Erick Simões
-# 	github: @ErickSimoes
-#	twitter: @AloErickSimoes
+# Syntax Coloring Map for MinimalUltrasonic
+# by fermeridamagni (Magni Development)
+# Based on work by Erick Simões
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
 
+MinimalUltrasonic	KEYWORD1
 Ultrasonic	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
+
 read	KEYWORD2
-distanceRead	KEYWORD2
+setTimeout	KEYWORD2
+setMaxDistance	KEYWORD2
+getTimeout	KEYWORD2
+setUnit	KEYWORD2
+getUnit	KEYWORD2
+timing	KEYWORD2
 
 #######################################
-# Constants (LITERAL1)
+# Constants and Enums (LITERAL1)
 #######################################
-CM	LITERAL1	Constants
-INC	LITERAL1	Constants
+
+CM	LITERAL1
+METERS	LITERAL1
+MM	LITERAL1
+INCHES	LITERAL1
+INC	LITERAL1
+YARDS	LITERAL1
+MILES	LITERAL1
+Unit	LITERAL1

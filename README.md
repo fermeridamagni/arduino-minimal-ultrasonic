@@ -1,111 +1,288 @@
-[![Open Source badge](https://img.shields.io/badge/Open%20Source-❤-red.svg)](https://opensource.org/)
-[![GitHub](https://img.shields.io/github/license/fermeridamagni/arduino-minimal-ultrasonic)](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/blob/master/LICENSE)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/fermeridamagni/arduino-minimal-ultrasonic)](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/releases/latest)
-
 # MinimalUltrasonic
 
-## Compatible with **HC-SR04**, **Ping** and **Seeed SEN136B5B**
+## Compatible with **HC-SR04**, **Ping)))** and **Seeed SEN136B5B**
 
-Work with **ultrasonic modules** is fairly simple, but can be even more practical if you abstract the control of some features. This library aims to resource efficiency and to simplify access to data.
+A minimalist, efficient Arduino library for ultrasonic distance sensors. This library prioritizes resource efficiency, code simplicity, and accurate measurements while supporting multiple units of measurement.
 
-Where necessary use the ultrasonic module **HC-SR04** (one of the most common on the market), **Ping)))** and/or **Seeed SEN136B5B** (_from Seeed Studio_), there are hundreds of libraries that purport to provide the most diverse roles for the user, however, the vast majority of the time, we just need to find out the distance and is that's what does this library.
+### ✨ Features
 
-This library is minimalist, reduces code execution, validation and unnecessary use of global variables, prioritizing smaller data types.
+- 🎯 **Multiple Units**: cm, meters, mm, inches, yards, and miles
+- ⚡ **Resource Efficient**: Minimal memory footprint and optimized code execution
+- 🔧 **Flexible Configuration**: Support for both 3-pin and 4-pin sensors
+- ⏱️ **Configurable Timeout**: Control maximum detection range
+- 📦 **Multiple Sensors**: Use multiple sensors simultaneously
+- 📝 **Well Documented**: Comprehensive inline documentation and examples
+- 🔄 **Backward Compatible**: Works with existing code using CM and INC constants
 
-You can run the library examples on the Wokwi Arduino simulator. Wokwi is a free Arduino simulator which runs on the browser. Here are two examples presenting the features of the Ultrasonic library
+### 🎮 Try it Online
 
-Example 1 - [Ultrasonic distance measurement using 4 pin and 3 pin sensor versions](https://wokwi.com/arduino/projects/296099969420493322)  
+Run examples on the **Wokwi Arduino Simulator** (free, browser-based):
 
-Example 2 - [Reading distance in both centimeters and inches](https://wokwi.com/arduino/projects/312346565007114818)
+- [Example 1 - Basic 3-pin and 4-pin sensor usage](https://wokwi.com/arduino/projects/296099969420493322)
+- [Example 2 - Multiple units demonstration](https://wokwi.com/arduino/projects/312346565007114818)
 
-Wiring
+### 🔌 Wiring
 
-It is very easy to connect an ultrasound module to the Arduino. For example, if you are using **HC-SR04**, connect the `trigger` and `echo` pin module on pin `12` and `13` of the Arduino, respectively. As in the picture:
+#### HC-SR04 (4-pin sensor)
+
+```
+HC-SR04      Arduino
+-------------------------
+VCC     ->   5V
+Trig    ->   Pin 12
+Echo    ->   Pin 13
+GND     ->   GND
+```
 
 ![HC-SR04 with Arduino](extras/HC-SR04-with-Arduino.jpg?raw=true "HC-SR04 with Arduino")
 
-If you are using a module with three pins (like  **Ping)))** or **Seeed SEN136B5B**), you can conect the `sig` pin module on pin `13` of the Arduino.
+#### Ping))) or Seeed SEN136B5B (3-pin sensor)
 
-## How to use
+```
+Sensor       Arduino
+-------------------------
+VCC     ->   5V
+SIG     ->   Pin 13
+GND     ->   GND
+```
 
-The idea is to provide a simpler environment possible. To do this, simply follow the steps:
+## 📦 Installation
 
-1. **Installing**
+### Method 1: Arduino Library Manager (Recommended)
 
-    First you need to import the library so that the IDE recognizes it. The simplest way is importing through the IDE itself:
-    - Click in ```Sketch > Include Library > Manage Libraries...```;
-    - In the search field type: ```ultrasonic```;
-    - In the list, look for ```Minimal Ultrasonic by fermeridamagni```;
-    - Click on ```Install```.
+1. Open Arduino IDE
+2. Go to `Sketch > Include Library > Manage Libraries...`
+3. Search for: `MinimalUltrasonic`
+4. Find `Minimal Ultrasonic by fermeridamagni`
+5. Click `Install`
 
-    > Alternatively, you can download the library [here](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/archive/master.zip) and import the ```.zip``` file into the IDE (see how to import a library [here](https://www.arduino.cc/en/Guide/Libraries#toc4)).
-2. **Importing on code**
+### Method 2: Manual Installation
 
-    To import the library to your code, just write at the beginning of the code ```#include <Ultrasonic.h>``` or, in the Arduino IDE, click in ```Sketch > Include Library > Ultrasonic``` (_will have the same result_).
-3. **Starting** (the most exciting part)
+1. Download the [latest release](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/archive/master.zip)
+2. In Arduino IDE: `Sketch > Include Library > Add .ZIP Library...`
+3. Select the downloaded file
 
-    Now is simply create a variable of type Ultrasonic passing as parameters two values representing, respectively, the Trig (emitter) and Echo (receiver) pins. Like this:
+## 🚀 Quick Start
 
-    ```c++
-    Ultrasonic ultrasonic(12, 13);
-    ```
+### Basic Usage
 
-    If you are using a module with three pins (like  **Ping)))** or **Seeed SEN136B5B**), pass as a parameter only the signal pin. Like this:
+```cpp
+#include <MinimalUltrasonic.h>
 
-    ```c++
-    Ultrasonic ultrasonic(13);
-    ```
+// For HC-SR04 (4-pin): specify trigger and echo pins
+MinimalUltrasonic sensor(12, 13);
 
-4. **Discovering the distance**
+// For Ping))) or Seeed (3-pin): specify only signal pin
+// MinimalUltrasonic sensor(13);
 
-    Having initialized a variable, you can run hers from the method that returns the distance read by module Ultrasonic: ```read()```:
+void setup() {
+  Serial.begin(9600);
+}
 
-    ```c++
-    ultrasonic.read();
-    ```
+void loop() {
+  float distance = sensor.read();  // Returns distance in cm (default)
+  
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  
+  delay(1000);
+}
+```
 
-5. **Only this?**
+### Reading in Different Units
 
-    Yes. That's it. By default, the value returned from the function  ```read()``` is the distance in centimeters. See full sample code [here](/examples/UltrasonicSimple/UltrasonicSimple.ino).
+```cpp
+// Method 1: Specify unit in read() call
+float cm = sensor.read(MinimalUltrasonic::CM);
+float meters = sensor.read(MinimalUltrasonic::METERS);
+float mm = sensor.read(MinimalUltrasonic::MM);
+float inches = sensor.read(MinimalUltrasonic::INCHES);
+float yards = sensor.read(MinimalUltrasonic::YARDS);
+float miles = sensor.read(MinimalUltrasonic::MILES);
 
-6. **Seriously?**
+// Method 2: Set default unit
+sensor.setUnit(MinimalUltrasonic::METERS);
+float distance = sensor.read();  // Now returns meters by default
 
-    You can still do a little more determining the unit of measurement that will be returned (centimeters (`CM`) or inches (`INC`)).
+// Backward compatibility with v1.x
+float cm = sensor.read(CM);
+float inches = sensor.read(INC);
+```
 
-    ```c++
-    ultrasonic.read()    // distance in CM
-    ultrasonic.read(CM)  // distance in CM
-    ultrasonic.read(INC) // distance in INC
-    ```
+### Available Units
 
-    You can also use more than one ultrasound module:
+| Unit | Enum Value | Description |
+|------|------------|-------------|
+| Centimeters | `MinimalUltrasonic::CM` | Default, 1 cm precision |
+| Meters | `MinimalUltrasonic::METERS` | For longer distances |
+| Millimeters | `MinimalUltrasonic::MM` | For high precision |
+| Inches | `MinimalUltrasonic::INCHES` | Imperial system |
+| Yards | `MinimalUltrasonic::YARDS` | Imperial system |
+| Miles | `MinimalUltrasonic::MILES` | Very long distances |
 
-    ```c++
-    Ultrasonic ultrasound1(12, 13);
-    Ultrasonic ultrasound2(10, 11);
-    Ultrasonic ultrasound3(5);
-    ```
+### Configuring Timeout
 
-7. **Timeouts**
+The timeout determines the maximum detectable distance:
 
-    If there is no object in range, the library will lock-up as it waits for the return pulse. You can change how long to wait by setting a timeout (in microseconds) in the constructor:
+```cpp
+// Method 1: Set in constructor
+MinimalUltrasonic sensor(12, 13, 40000UL);  // ~6.8m max range
 
-    ```c++
-    Ultrasonic ultrasonic(12, 13, 40000UL);
-    ```
+// Method 2: Set after construction
+sensor.setTimeout(40000UL);  // Timeout in microseconds
 
-    Or during runtime:
+// Method 3: Set by distance (easier!)
+sensor.setMaxDistance(680);  // 680 cm = 6.8m
 
-    ```c++
-    ultrasonic.setTimeout(40000UL);
-    ```
+// Get current timeout
+unsigned long timeout = sensor.getTimeout();
+```
 
-    > The default value is `20000UL` (_Unsigned Long_).
+**Timeout Guidelines:**
 
-    Using a 40ms timeout should give you a maximum range of approximately 6.8m. You may need to adjust this parameter.
+- `20000µs` (default) ≈ 3.4m max range
+- `30000µs` ≈ 5.1m max range
+- `40000µs` ≈ 6.8m max range
 
-## License
+### Using Multiple Sensors
 
-Minimal Ultrasonic by [fermeridamagni](http://magni.dev "fermeridamagni - Magni Development") is licensed under a MIT License. Based on [the work of Erick Simões](https://github.com/ErickSimoes/Ultrasonic).
+```cpp
+#include <MinimalUltrasonic.h>
+
+MinimalUltrasonic sensor1(12, 13);  // HC-SR04
+MinimalUltrasonic sensor2(10);      // Ping)))
+MinimalUltrasonic sensor3(8);       // Seeed
+
+void setup() {
+  Serial.begin(9600);
+  
+  // Optional: Set different default units
+  sensor1.setUnit(MinimalUltrasonic::CM);
+  sensor2.setUnit(MinimalUltrasonic::METERS);
+  sensor3.setUnit(MinimalUltrasonic::INCHES);
+}
+
+void loop() {
+  Serial.print("Sensor 1: ");
+  Serial.print(sensor1.read());
+  Serial.println(" cm");
+  
+  Serial.print("Sensor 2: ");
+  Serial.print(sensor2.read());
+  Serial.println(" m");
+  
+  Serial.print("Sensor 3: ");
+  Serial.print(sensor3.read());
+  Serial.println(" inches");
+  
+  delay(1000);
+}
+```
+
+## 📚 API Reference
+
+### Constructors
+
+```cpp
+// 3-pin sensor (Ping, Seeed)
+MinimalUltrasonic(uint8_t sigPin)
+
+// 4-pin sensor (HC-SR04)
+MinimalUltrasonic(uint8_t trigPin, uint8_t echoPin, unsigned long timeOut = 20000UL)
+```
+
+### Methods
+
+```cpp
+// Read distance in specified unit (default: CM)
+float read(Unit unit = CM) const
+
+// Set timeout in microseconds
+void setTimeout(unsigned long timeOut)
+
+// Set maximum distance in centimeters
+void setMaxDistance(unsigned int distance)
+
+// Get current timeout
+unsigned long getTimeout() const
+
+// Set default unit for read() calls
+void setUnit(Unit unit)
+
+// Get current default unit
+Unit getUnit() const
+```
+
+## 💡 Examples
+
+The library includes several examples:
+
+1. **UltrasonicSimple** - Basic distance measurement
+2. **Timeout** - Configuring timeout for max range
+3. **MultipleUltrasonicSensors** - Using multiple sensors
+4. **AllUnits** - Demonstrating all available units
+
+Access examples in Arduino IDE: `File > Examples > MinimalUltrasonic`
+
+## 🎯 Best Practices
+
+1. **Sensor Placement**: Ensure sensor has clear line of sight to target
+2. **Timeout Configuration**: Set appropriate timeout for your use case
+3. **Delay Between Readings**: Add small delay (20-30ms minimum) between measurements
+4. **Error Handling**: Check for `0` return value indicating timeout/no detection
+5. **Avoid Interference**: Space multiple sensors apart to prevent crosstalk
+6. **Power Supply**: Ensure stable 5V power supply for best results
+
+## 🔧 Technical Details
+
+- **Speed of Sound**: 343 m/s (assumed at 20°C, sea level)
+- **Detection Range**: 2cm to ~400cm (depends on sensor and timeout)
+- **Measurement Accuracy**: ±3mm (sensor dependent)
+- **Angular Coverage**: ~15° cone (HC-SR04)
+- **Operating Voltage**: 5V DC
+- **Current Consumption**: <15mA
+
+## 🐛 Troubleshooting
+
+**Problem: Always returns 0**
+
+- Check wiring connections
+- Verify power supply (5V)
+- Increase timeout with `setTimeout()`
+- Ensure object is within detection range
+
+**Problem: Unstable readings**
+
+- Add delay between measurements
+- Check for electrical interference
+- Ensure sensor is mounted firmly
+- Verify object surface is not too absorbent
+
+**Problem: Won't compile**
+
+- Verify library is installed correctly
+- Check for typos in code
+- Ensure Arduino.h is available
+
+## 📄 License
+
+MinimalUltrasonic by [fermeridamagni](http://magni.dev "fermeridamagni - Magni Development") is licensed under the MIT License.
+
+Based on [the work of Erick Simões](https://github.com/ErickSimoes/Ultrasonic).
 
 See [LICENSE](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/blob/master/LICENSE) for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/discussions)
+- **Email**: <hello@magni.dev>
+
+---
+
+**Made with ❤️ by [Magni Development](http://magni.dev)**
