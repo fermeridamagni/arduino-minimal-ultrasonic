@@ -68,9 +68,14 @@ jobs:
 
       - name: Zip Ultrasonic.zip
         run: |
-          # Create a zip containing the library files (include library.properties)
-          # Exclude docs, CI config and git metadata to keep the artifact small.
-          zip -qq -r ultrasonic.zip . -x ".github/*" "docs/*" ".git/*" "node_modules/*"
+          # Create library folder structure
+          mkdir -p MinimalUltrasonic
+
+          # Copy library files (exclude docs, CI config, git metadata, node_modules)
+          rsync -a --exclude='.github' --exclude='docs' --exclude='.git' --exclude='node_modules' --exclude='MinimalUltrasonic' ./ MinimalUltrasonic/
+
+          # Create zip with the library folder
+          zip -qq -r ultrasonic.zip MinimalUltrasonic
         working-directory: ${{ github.workspace }}
 
       - name: Install Arduino CLI
