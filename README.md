@@ -34,7 +34,7 @@ Echo    ->   Pin 13
 GND     ->   GND
 ```
 
-![HC-SR04 with Arduino](extras/HC-SR04-with-Arduino.jpg?raw=true "HC-SR04 with Arduino")
+![HC-SR04 with Arduino](assets/HC-SR04-with-Arduino.jpg?raw=true "HC-SR04 with Arduino")
 
 #### Ping))) or Seeed SEN136B5B (3-pin sensor)
 
