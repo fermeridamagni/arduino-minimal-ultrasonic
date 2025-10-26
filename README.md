@@ -3,6 +3,7 @@
 [![Arduino Library](https://img.shields.io/badge/Arduino-Library-blue.svg)](https://www.arduino.cc/reference/en/libraries/minimalultrasonic/)
 [![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Check Arduino](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/actions/workflows/check-arduino.yml/badge.svg)](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/actions/workflows/check-arduino.yml)
 
 > A minimalist, efficient Arduino library for ultrasonic distance sensors with comprehensive unit support.
 
