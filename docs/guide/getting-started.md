@@ -173,7 +173,7 @@ float yards = sensor.read(MinimalUltrasonic::YARDS);
 float miles = sensor.read(MinimalUltrasonic::MILES);
 ```
 
-Learn more in the [Multiple Units Guide](/guide/units).
+Learn more in the [Multiple Units Guide](/guide/multiple-units).
 
 ## Common Issues
 
@@ -215,8 +215,8 @@ See [Troubleshooting Guide](/guide/troubleshooting) for more help.
 Now that you have a working setup, explore more features:
 
 - **[Basic Usage](/guide/basic-usage)** - Learn essential methods
-- **[Multiple Units](/guide/units)** - Work with different measurements
-- **[Timeout Configuration](/guide/timeout)** - Adjust maximum range
+- **[Multiple Units](/guide/multiple-units)** - Work with different measurements
+- **[Timeout Configuration](/guide/timeout-configuration)** - Adjust maximum range
 - **[Examples](/examples/basic)** - See working code samples
 
 ## Quick Reference Card

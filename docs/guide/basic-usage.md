@@ -257,7 +257,7 @@ void loop() {
 
 ## Next Steps
 
-- **[Multiple Units](/guide/units)** - Work with different measurements
-- **[Timeout Configuration](/guide/timeout)** - Adjust maximum range
+- **[Multiple Units](/guide/multiple-units)** - Work with different measurements
+- **[Timeout Configuration](/guide/timeout-configuration)** - Adjust maximum range
 - **[Multiple Sensors](/guide/multiple-sensors)** - Use multiple sensors
 - **[Examples](/examples/basic)** - See complete working examples
