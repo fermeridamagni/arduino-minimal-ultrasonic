@@ -2,25 +2,29 @@ name: Check Arduino
 
 on:
   push:
-    branches: [ master, test ]
-  pull_request: 
-    branches: [ master, test ]
+    branches: [main]
+
+  pull_request:
+    branches: [main]
 
   workflow_dispatch:
 
-jobs:
+concurrency:
+  group: arduino-check
+  cancel-in-progress: true
 
+jobs:
   lint:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: arduino/arduino-lint-action
-        uses: arduino/arduino-lint-action@v1.0.0
+        uses: arduino/arduino-lint-action@v2.0.0
         with:
-          #path: 
-          #version: 
+          #path:
+          #version:
           compliance: strict
           library-manager: update
           project-type: all
@@ -52,7 +56,7 @@ jobs:
             arduino-platform: "arduino:avr"
             fqbn: "arduino:avr:leonardo"
             serial-enabled: true
-    
+
     runs-on: ubuntu-20.04
 
     steps:
@@ -63,22 +67,23 @@ jobs:
         uses: montudor/action-zip@v0.1.1
 
       - name: Zip Ultrasonic.zip
-        run: zip -qq -r ultrasonic.zip ./src/
+        run: |
+          # Create a zip containing the library files (include library.properties)
+          # Exclude docs, CI config and git metadata to keep the artifact small.
+          zip -qq -r ultrasonic.zip . -x ".github/*" "docs/*" ".git/*" "node_modules/*"
         working-directory: ${{ github.workspace }}
 
       - name: Install Arduino CLI
-        uses: arduino/setup-arduino-cli@v1.1.1
-        with:
-          version: "0.19.x"
+        uses: arduino/setup-arduino-cli@v2.0.0
 
       - name: Install Arduino Platform
         run: |
           arduino-cli core download ${{ matrix.arduino-platform }}
           arduino-cli core update-index
           arduino-cli core install ${{ matrix.arduino-platform }}
-      
+
       #This is needed because we are using --zip-path to install a library
-      - name: Enables unsafe install 
+      - name: Enables unsafe install
         run: |
           arduino-cli config init 
           arduino-cli config set library.enable_unsafe_install true
@@ -86,12 +91,17 @@ jobs:
       - name: Install Ultrasonic.h
         run: arduino-cli lib install --zip-path ./ultrasonic.zip
 
-      - name: Compile Sketch UltrasonicSimple.ino
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/UltrasonicSimple
+      - name: Compile Sketch `basic.ino`
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/basic.ino
 
-      - name: Compile Sketch Timeout.ino
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/Timeout
+      - name: Compile Sketch `advanced.ino`
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/advanced.ino
 
-      - name: Compile Sketch MultipleUltrasonicSensors.ino
-        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/MultipleUltrasonicSensors
-    
+      - name: Compile Sketch `all-units.ino`
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/all-units.ino
+
+      - name: Compile Sketch `multiple-sensors.ino`
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/multiple-sensors.ino
+
+      - name: Compile Sketch `timeout.ino`
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./examples/timeout.ino
