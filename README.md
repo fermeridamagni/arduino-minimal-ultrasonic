@@ -1,6 +1,6 @@
 [![Open Source badge](https://img.shields.io/badge/Open%20Source-❤-red.svg)](https://opensource.org/)
-[![GitHub](https://img.shields.io/github/license/ErickSimoes/Ultrasonic)](https://github.com/ErickSimoes/Ultrasonic/blob/master/LICENSE)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/ErickSimoes/Ultrasonic)](https://github.com/ErickSimoes/Ultrasonic/releases/latest)
+[![GitHub](https://img.shields.io/github/license/fermeridamagni/arduino-minimal-ultrasonic)](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/blob/master/LICENSE)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/fermeridamagni/arduino-minimal-ultrasonic)](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/releases/latest)
 
 # MinimalUltrasonic
 
@@ -35,10 +35,10 @@ The idea is to provide a simpler environment possible. To do this, simply follow
     First you need to import the library so that the IDE recognizes it. The simplest way is importing through the IDE itself:
     - Click in ```Sketch > Include Library > Manage Libraries...```;
     - In the search field type: ```ultrasonic```;
-    - In the list, look for ```Ultrasonic by Erick Simões```;
+    - In the list, look for ```Minimal Ultrasonic by fermeridamagni```;
     - Click on ```Install```.
 
-    > Alternatively, you can download the library [here](https://github.com/ErickSimoes/Ultrasonic/archive/master.zip) and import the ```.zip``` file into the IDE (see how to import a library [here](https://www.arduino.cc/en/Guide/Libraries#toc4)).
+    > Alternatively, you can download the library [here](https://github.com/fermeridamagni/arduino-minimal-ultrasonic/archive/master.zip) and import the ```.zip``` file into the IDE (see how to import a library [here](https://www.arduino.cc/en/Guide/Libraries#toc4)).
 2. **Importing on code**
 
     To import the library to your code, just write at the beginning of the code ```#include <Ultrasonic.h>``` or, in the Arduino IDE, click in ```Sketch > Include Library > Ultrasonic``` (_will have the same result_).
