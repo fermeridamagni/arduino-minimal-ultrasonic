@@ -7,7 +7,7 @@
 
 > A minimalist, efficient Arduino library for ultrasonic distance sensors with comprehensive unit support.
 
-**Compatible with HC-SR04, Ping, and Seeed SEN136B5B sensors**
+## Compatible with HC-SR04, Ping, and Seeed SEN136B5B sensors
 
 ## ✨ Features
 
