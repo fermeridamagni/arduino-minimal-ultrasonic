@@ -25,7 +25,7 @@ Run examples on the **Wokwi Arduino Simulator** (free, browser-based):
 
 #### HC-SR04 (4-pin sensor)
 
-```
+```txt
 HC-SR04      Arduino
 -------------------------
 VCC     ->   5V
@@ -38,7 +38,7 @@ GND     ->   GND
 
 #### Ping))) or Seeed SEN136B5B (3-pin sensor)
 
-```
+```txt
 Sensor       Arduino
 -------------------------
 VCC     ->   5V

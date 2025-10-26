@@ -369,7 +369,7 @@ float distance = sensor.read();
 
 ## 📚 Documentation Structure
 
-```
+```txt
 arduino-minimal-ultrasonic/
 ├── README.md            # Main documentation, quick start
 ├── API.md              # Complete API reference

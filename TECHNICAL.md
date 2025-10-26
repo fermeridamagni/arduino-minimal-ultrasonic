@@ -12,7 +12,7 @@
 
 ### Class Structure
 
-```
+```txt
 MinimalUltrasonic
 ├── Public Interface
 │   ├── Constructors (2 overloads)
@@ -108,7 +108,7 @@ All conversions start from the time-of-flight in microseconds:
 
 The timeout determines maximum detectable distance:
 
-```
+```txt
 max_distance (cm) = (timeout_µs / 29.1) / 2
 timeout_µs = max_distance_cm × 29.1 × 2
 ```
