@@ -4,6 +4,9 @@
 	"[html][javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
+	"[md]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+	},
 
 	// Biome Formatter
 	"biome.suggestInstallingGlobally": false
