@@ -1,0 +1,14 @@
+{
+	"name": "arduino-minimal-ultrasonic",
+	"private": true,
+	"devDependencies": {
+		"@biomejs/biome": "2.3.0",
+		"vitepress": "2.0.0-alpha.12"
+	},
+	"scripts": {
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:preview": "vitepress preview docs"
+	},
+	"packageManager": "pnpm@10.0.0"
+}
